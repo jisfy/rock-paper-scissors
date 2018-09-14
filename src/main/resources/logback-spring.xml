@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <springProfile name="tool">
+        <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>%d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable</Pattern>
+            </layout>
+        </appender>
+
+        <appender name="ConsoleSimplified" class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>%msg%n%throwable</Pattern>
+            </layout>
+        </appender>
+
+        <root level="error">
+            <appender-ref ref="Console" />
+        </root>
+
+        <logger name="com.chompchompfig.rockpaperscissors" level="error" additivity="false">
+            <appender-ref ref="Console" />
+        </logger>
+
+        <logger name="com.chompchompfig.rockpaperscissors.application.commandline.RockPaperScissorsApplicationRunner"
+                level="info" additivity="false">
+            <appender-ref ref="ConsoleSimplified" />
+        </logger>
+
+
+    </springProfile>
+
+    <springProfile name="default">
+        <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>%d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable</Pattern>
+            </layout>
+        </appender>
+        <root level="info">
+            <appender-ref ref="Console" />
+        </root>
+    </springProfile>
+
+</configuration>
